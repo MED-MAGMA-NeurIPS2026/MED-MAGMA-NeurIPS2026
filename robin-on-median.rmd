@@ -1,0 +1,54 @@
+
+```{r}
+library(robin)
+```
+
+Load graphs
+
+```{r}
+cell.graph <- as_undirected(igraph::read_graph(file="./results/median_cell_graph.graphml", format="graphml"))
+gene.graph <- as_undirected(igraph::read_graph(file="./results/median_gene_graph.graphml", format="graphml"))
+cell.graph
+```
+
+Generate random robin graph objects
+
+```{r}
+cell.random <- random(graph=cell.graph)
+gene.random <- random(graph=gene.graph)
+```
+
+Check robustness
+
+```{r}
+cell.proc <- robinRobust(graph=cell.graph, graphRandom=cell.random, method="leiden")
+gene.proc <- robinRobust(graph=gene.graph, graphRandom=gene.random, method="leiden")
+plot(cell.proc)
+plot(gene.proc)
+```
+
+Some statistical tests
+
+```{r}
+robinFDATest(cell.proc)
+robinFDATest(gene.proc)
+```
+
+The statistical test we reference in the paper is below - it is the Bayes Factor
+for the null hypothesis where the two robin plot curves come from the same process.
+These scores indicate very strong evidence agains the null hypothesis.
+
+Intuitively, this means that our clusters found on our networks are robust to
+random permutations.
+
+```{r}
+robinGPTest(cell.proc)
+robinGPTest(gene.proc)
+```
+
+
+
+
+
+
+

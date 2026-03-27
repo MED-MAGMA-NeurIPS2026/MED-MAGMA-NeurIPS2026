@@ -1,0 +1,27 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "MED-MAGMA"
+version = "1.0.1"
+description = "An implementation of the matrix elliptical distribution multi-axis graphical modelling algorithm."
+authors = [
+    { name = "Bailey Andrew", email = "sceba@leeds.ac.uk" }
+]
+license = { file = "LICENSE" }
+readme = "README.md"
+classifiers = [
+    "Programming Language :: Python :: 3.13",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+requires-python = ">=3.13" # Was Python this was written in
+dependencies = [
+    "numpy>=2.3", # Was numpy this was written with
+    "scipy>=1.16", # Was scipy this was written with
+]
+
+[project.urls]
+"Homepage" = "https://github.com/BaileyAndrew/MED-MAGMA"
+"Bug Tracker" = "https://github.com/BaileyAndrew/MED-MAGMA/issues"
